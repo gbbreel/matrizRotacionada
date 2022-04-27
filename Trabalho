@@ -1,0 +1,54 @@
+public class Trabalho {
+    
+    public static void main(String[] args) {
+
+        int[][] Matriz = { { 2, 3 }, { 4, 5 } };
+        mostrarMatriz(Matriz);
+    }
+
+    public static void mostrarMatriz(int[][] matriz) {
+
+        System.out.println("\nMatriz Inicial: ");
+        mostraraMatriz(matriz);
+        if (aMatrizeQuadrada(matriz)) {
+            System.out.println("Matriz nao é quadrada");
+            return;
+        }
+
+        System.out.println("Matriz rotacionada em 90 graus: ");
+        mostraraMatriz(rotacionarMatriz(matriz, 90));
+
+    }
+
+    public static boolean aMatrizeQuadrada(int[][] matriz) {
+        return matriz.length == matriz[0].length;
+    }
+
+    public static void mostraraMatriz(int[][] matriz) {
+        for (int x = 0; x < matriz.length; ++) {
+            for (int y = 0; y < matriz[x].length; y++) {
+                System.out.print(matriz[x][y] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static int[][] rotacionaraMatriz(int[][] matriz, int graus) {
+        int Rotacionarem90Graus = graus / 90;
+        int[][] matrizRotacionada = matriz;
+        for (int x = 0; x < Rotacionarem90Graus; x++) {
+            matrizRotacionada = rotacionarem90Graus(matrizRotacionada);
+        }
+        return matrizRotacionada;
+    }
+
+    public static int[][] rotacionar90Graus(int[][] matriz) {
+        int[][] matrizRotacionada = new int[matriz.length][matriz.length];
+        for (int x = 0; x < matriz.length; x++) {
+            for (int y = 0; y < matriz.length; y++) {
+                matrizRotacionada[x][y] = matriz[matriz.length - y - 1][x];
+            }
+        }y
+        return matrizRotacionada;
+    }
+}
